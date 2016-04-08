@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="example" namespace="/example" extends="struts-default">
+        <action name="Authentication" class="example.Authentication" method="execute">
+            <result name="admin">/example/Admin.jsp</result>
+             <result name="student">/example/Student.jsp</result>
+              <result name="faculty">/example/Faculty.jsp</result>
+              <result name="error">/example/error.jsp</result>
+               <result name="login">/example/login.jsp</result>
+        </action>
+        <action name="logout" class="example.Authentication" method="logoutuser">
+            <result type="redirect" name="logoutsuccess">/</result>
+            
+        </action>
+         <action name="saveDb" class="example.saveDb" method="execute">
+            <result name="success">/example/login.jsp</result>
+             
+        </action>
+        
+        <action name="scoreSave" class="example.scoreSave" method="execute">
+            <result name="success">/example/Faculty.jsp</result>
+             
+        </action>
+        <action name="update" class="example.operation" method="execute">
+            <result >/example/update.jsp</result>
+             
+        </action>
+        <action name="delete" class="example.operation" method="del">
+            <result name="success">/example/Faculty.jsp</result>
+             
+        </action>
+    
+    <action name="deactivate" class="example.operation" method="deactivate">
+            <result name="success">/example/Faculty.jsp</result>
+             
+        </action>
+        <action name="deactivateFaculty" class="example.operation" method="deactivateFaculty">
+            <result name="success">/example/Admin.jsp</result>
+             
+        </action>
+        <action name="deactivateAdmin" class="example.operation" method="deactivateAdmin">
+            <result name="success">/example/Admin.jsp</result>
+             
+        </action>
+        
+        
+        <action name="activate" class="example.operation" method="activate">
+            <result name="success">/example/Faculty.jsp</result>
+             
+        </action>
+        <action name="activateFaculty" class="example.operation" method="activateFaculty">
+            <result name="success">/example/Admin.jsp</result>
+             
+        </action>
+         <action name="activateAdmin" class="example.operation" method="activateAdmin">
+            <result name="success">/example/Admin.jsp</result>
+             
+        </action>
+        
+        <action name="noticepost" class="example.operation" method="noticepost">
+            <result name="success">/example/Faculty.jsp</result>
+             
+        </action>
+    </package>
+     
+</struts>
+
