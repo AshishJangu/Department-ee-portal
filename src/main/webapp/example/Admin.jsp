@@ -1,7 +1,7 @@
 <%-- 
     Document   : Faculty
     Created on : Apr 2, 2016, 8:13:42 AM
-    Author     : JANGU
+    Author     : JANGU29
 --%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.ResultSet"%>
