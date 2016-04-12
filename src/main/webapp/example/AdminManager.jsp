@@ -23,20 +23,16 @@ String att;
 %>
 <s:set scope="request" var="uname" value="#session.name"/>
 <%
-    
-   
-     Class.forName("com.mysql.jdbc.Driver");
-      con=DriverManager.getConnection("jdbc:mysql://127.13.149.2:3306/department","adminRkEuhBn","b5u43VY_XpzV");
-    
-   String uname1=request.getAttribute("uname").toString();
-  String q="select * from nametoid";  
-ps=con.prepareStatement(q);
 
-rs=ps.executeQuery();
-String q1="select * from facultyinfo";  
-ps1=con.prepareStatement(q1);
-
-rs1=ps1.executeQuery();
+    Class.forName("com.mysql.jdbc.Driver");
+     con=DriverManager.getConnection("jdbc:mysql://127.13.149.2:3306/department","adminRkEuhBn","b5u43VY_XpzV");
+    String uname1=request.getAttribute("uname").toString();
+    String q="select * from nametoid"; 
+    ps=con.prepareStatement(q);
+    rs=ps.executeQuery();
+    String q1="select * from facultyinfo";  
+    ps1=con.prepareStatement(q1);
+    rs1=ps1.executeQuery();
 
 %>
   
@@ -46,70 +42,9 @@ rs1=ps1.executeQuery();
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-                       <style>
-            #menu8 {
-                border-radius:10px;
-                
-	width: 150px;
-        height:200px;
-	margin-top: 0px;
-        margin-left:600px;
-        
-       
-}
-	
-#menu8 li a {
-	text-decoration: none;
-	height: 32px;
-  	voice-family: "\"; 
-  	voice-family: inherit;
-  	height: 24px;
-}
-	
-#menu8 li a:link, #menu8 li a:visited {
-	color: #777;
-	display: block;
-	background: url(images/menu8.gif);
-	padding: 8px 0 0 20px;
-}
-	
-#menu8 li a:hover {
-	color: #257EB7;
-	background: url(images/menu8.gif) 0 -32px;
-	padding: 8px 0 0 25px;
-}
-	
-#menu8 li a:active {
-	color: #fff;
-	background: url(images/menu8.gif) 0 -64px;
-	padding: 8px 0 0 25px;
-}
-
-#menu8 ul {
-	list-style: none;
-      
-	margin: 0;
-	padding: 0;
-}
-
-
-
-body{
-    width:95%;
-    height:100%;
-    background-color:white;
-    background-image: url('../Image/bg3.jpg');
-    background-repeat: no-repeat;
-    background-size: 1500px 700px;
-    background-attachment: fixed;
-        
-    
-}
-
-
-
-                       .studentmngt
+        <title>Department E-Portal</title>
+        <style>
+            .studentmngt
             {
                 margin-left:400px;
                 border:3px solid; 
@@ -200,26 +135,19 @@ a:active {
     font-family: sans-serif;
     font-size: 20px;
 }
-    .box
-    {
-      border:2px solid; 
-    
-    border-radius:12px;
-    font-family: sans-serif;
-    font-size: 20px;  
-    }
-            
-        
-
-
-
-
         </style>
     </head>
     <body>
       
         <tiles:insert attribute="head"/>
-        <div class='btn'>
+        <div>
+        
+            <div name="bas" style="float:left;margin-top:40px;border: black;border-radius:20px;height:500px;width:300px;border-style: inset;">
+              <tiles:insert attribute="fbasic"/>
+        </div>
+        <!----------------------LOGOUT BUTTON------------->
+       
+                    <div class='btn'>
                          
                         <a  style="ine-height: 1em;
                             display:inline-block;
@@ -228,21 +156,15 @@ a:active {
                              padding-left:20px;
                     margin:0px;"href="logout">Logout</a>
                     </div>
-        <div>
-        
-            <div name="bas" style="float:left;margin-top:40px;border: black;border-radius:20px;height:500px;width:300px;border-style: inset;">
-              <tiles:insert attribute="fbasic"/>
-        </div>
-         <h2 style='color:yellow;'>Course and Section Details</h2>
        
-
-
- <table class="studentmngt">
-            <tr class="stutr">
-                <th class="stutd">Id</th>
-                <th class="stutd">Qualification</th>
-                <th class="stutd">Courses</th>
-                 <th class="stutd">SectionGiven</th>
+        
+<h2 style='color:yellow;'>Course and Section Details:</h2>
+ <table class='studentmngt'>
+            <tr class='stutr'>
+                <td class='stutd'>Id</td>
+                <td class='stutd'> Qualification</td>
+                <td class='stutd'>Courses</td>
+                 <td class='stutd'>SectionGiven</td>
                
             </tr>
             <%  
@@ -252,13 +174,12 @@ while(rs1.next())
 {
   
             %>
-             <tr >
-                <td class="stutd1"><%=rs1.getInt("Id")%></td>
-                <td class="stutd1"><%=rs1.getString("qualification")%></td>
-                
-                <td class="stutd1"><%=rs1.getString("courses")%></td>
-                <td class="stutd1"><%=rs1.getString("SectionGiven")%></td>
-               
+             <tr>
+                <td class='stutd1'><%=rs1.getInt("Id")%></td>
+                <td class='stutd1'><%=rs1.getString("qualification")%></td>
+                <td class='stutd1'><%=rs1.getString("courses")%></td>
+                <td class='stutd1'><%=rs1.getString("SectionGiven")%></td>
+               <tr ><td colspan="4"><hr></td></tr>
                 
             </tr>
             
@@ -276,24 +197,14 @@ while(rs1.next())
 
 
 
-
-
-
-
-
-
-
-
-
-
-<h2 style='color:yellow;'>Student Modification</h2>
+<h2 style='color:yellow;'>Student Management:</h2>
 
         <table class="studentmngt">
             <tr class="stutr">
-                <th class="stutd">Id</th>
-                <th class="stutd">Username</th>
-                <th class="stutd">Operation</th>
-                <th class="stutd">Deactivate/Delete Student</th>
+                <td class="stutd">Id</td>
+                <td class="stutd">Username</td>
+                <td class="stutd">Operation</td>
+                <td class="stutd">Deactivate/Delete Student</td>
             </tr>
             <%  
             
@@ -302,45 +213,42 @@ while(rs.next())
 {
     id=rs.getInt("Id");
     nameStu=rs.getString("name");
-     Type="3";
+     Type="1";
             %>
              <tr>
                 <td class="stutd1"><%=id%></td>
                 <td class="stutd1"><%=nameStu%></td>
-                <td class="stutd1"><a href="op.jsp?username=<%=nameStu%>&&rid=<%=id%>">Query</a></td>
+                <td class="stutd1"><a  href="op.jsp?username=<%=nameStu%>&&rid=<%=id%>">Query</a></td>
                
-                <td class="stutd1"><a href="deactivate?Id=<%=id%>&&username=<%=nameStu%>&&Type=<%=Type%>" title="Services">Deactivate Student</a></td>
-            </tr>
-            
+                <td class="stutd1"> <a href="deactivate?Id=<%=id%>&&username=<%=nameStu%>&&Type=<%=Type%>" title="Services">Deactivate Student</a></td>
+          
+             </tr>
+            <tr ><td colspan="4"><hr></td></tr>
             
             <%
 }
             %>
             
         </table>
-            
-            <hr><hr><hr>
+            <hr><hr>
        <a style='color:black;text-decoration: none;font-family: sans-serif; margin-left: 350px;width:150px; height:150px; background-color:red;border:2px solid white;font-size:50px;border-radius:12px; ' href="adminallnotices.jsp">View All Notices</a>
-           
-       <hr><hr><hr>
-       
-       
+       <hr><hr>     
+       <center>
        <div id="notice">
                 <h1 style='color:yellow; border: 2px solid white;background-color:black;border-radius: 25px;'>
                     NOTICE POST
-                    
                 </h1>
-                <div class="noticeform">
-                <s:form action="noticepost">
-                    <s:textfield name="subject" label="subject" cssClass="sub"></s:textfield>
-                    <s:textarea  name="body" rows="10" cols="90" label="Message" cssClass="msg"></s:textarea>  
+           <div class="noticeform">
+                <s:form action="noticepost" >
+                    <s:textfield name="subject" label="Subject" cssClass="sub"></s:textfield>
+                    <s:textarea  name="body" rows="10" cols="90" label="Notice Message" cssClass="msg"></s:textarea>  
                     
                     <s:submit value="POST" cssClass="btn"/>
                 </s:form>
-               </div> 
-                
+             </div>   
+        <hr>        
             </div>
-       
+       </center >
         </div>
     </body>
 </html>

@@ -7,6 +7,7 @@ package example;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.sun.corba.se.spi.presentation.rmi.StubAdapter;
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -42,6 +43,7 @@ public class operation extends ActionSupport {
 private int total;
 private float cgpa;
 private float att;
+private String Type;
       Connection con;
 PreparedStatement ps,ps1;
 ResultSet rs,rs1;
@@ -52,8 +54,7 @@ String uname1;
     public String del()throws Exception{
     
      Class.forName("com.mysql.jdbc.Driver");
-      con=DriverManager.getConnection("jdbc:mysql://localhost:3306/department","root","root");
-     
+    con=DriverManager.getConnection("jdbc:mysql://127.13.149.2:3306/department","adminRkEuhBn","b5u43VY_XpzV");
     
   System.out.println(id+"adsadasd");
   String q="delete from score where subject=? && Id=?";  
@@ -69,7 +70,7 @@ ps.executeUpdate();
       public String deactivate()throws Exception{
     
      Class.forName("com.mysql.jdbc.Driver");
-      con=DriverManager.getConnection("jdbc:mysql://localhost:3306/department","root","root");
+      con=DriverManager.getConnection("jdbc:mysql://127.13.149.2:3306/department","adminRkEuhBn","b5u43VY_XpzV");
      
     
   System.out.println(id+"adsadasd");
@@ -86,13 +87,19 @@ String q1="update login set activate=? where username=?";
 
 ps1.setString(2,username);
 ps1.executeUpdate();
+System.out.println("Type issssssssss"+Type);
+   if(Type.equals("3"))
         return SUCCESS;
-}
+   else if(Type.equals("1"))
+        return "success1";
+   else
+         return SUCCESS;
+      }
       
          public String deactivateFaculty()throws Exception{
     
      Class.forName("com.mysql.jdbc.Driver");
-      con=DriverManager.getConnection("jdbc:mysql://localhost:3306/department","root","root");
+     con=DriverManager.getConnection("jdbc:mysql://127.13.149.2:3306/department","adminRkEuhBn","b5u43VY_XpzV");
      
     
   System.out.println(id+"adsadasd");
@@ -114,7 +121,7 @@ ps1.executeUpdate();
           public String deactivateAdmin()throws Exception{
     
      Class.forName("com.mysql.jdbc.Driver");
-      con=DriverManager.getConnection("jdbc:mysql://localhost:3306/department","root","root");
+       con=DriverManager.getConnection("jdbc:mysql://127.13.149.2:3306/department","adminRkEuhBn","b5u43VY_XpzV");
      
     
   System.out.println(id+"admin");
@@ -140,9 +147,9 @@ ps1.executeUpdate();
     public String activate()throws Exception{
     
      Class.forName("com.mysql.jdbc.Driver");
-      con=DriverManager.getConnection("jdbc:mysql://localhost:3306/department","root","root");
+      con=DriverManager.getConnection("jdbc:mysql://127.13.149.2:3306/department","adminRkEuhBn","b5u43VY_XpzV");
      
-    
+    String Type=ActionContext.getContext().getSession().get("Type").toString();
  
   String q="insert into nametoid values(?,?)";  
 ps=con.prepareStatement(q);
@@ -156,12 +163,18 @@ ps.executeUpdate();
 
 ps1.setString(2,username);
 ps1.executeUpdate();
- return SUCCESS;
+
+ if(Type.equals("3"))
+        return SUCCESS;
+   else if(Type.equals("1"))
+        return "success1";
+ else
+return SUCCESS;
 }   
     public String activateFaculty()throws Exception{
     
      Class.forName("com.mysql.jdbc.Driver");
-      con=DriverManager.getConnection("jdbc:mysql://localhost:3306/department","root","root");
+       con=DriverManager.getConnection("jdbc:mysql://127.13.149.2:3306/department","adminRkEuhBn","b5u43VY_XpzV");
      
     
  
@@ -183,7 +196,7 @@ ps1.executeUpdate();
       public String activateAdmin()throws Exception{
     
      Class.forName("com.mysql.jdbc.Driver");
-      con=DriverManager.getConnection("jdbc:mysql://localhost:3306/department","root","root");
+     con=DriverManager.getConnection("jdbc:mysql://127.13.149.2:3306/department","adminRkEuhBn","b5u43VY_XpzV");
      
     
  
@@ -210,7 +223,7 @@ ps1.executeUpdate();
      String name=m.get("name").toString();
      System.out.println("---------------okkk----------------------"+subject);
      Class.forName("com.mysql.jdbc.Driver");
-     Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/department","root","root");
+      Connection  con=DriverManager.getConnection("jdbc:mysql://127.13.149.2:3306/department","adminRkEuhBn","b5u43VY_XpzV");
   DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 Calendar cal = Calendar.getInstance();
 String date=dateFormat.format(cal.getTime()); //2014/08/06 16:00:22
@@ -361,6 +374,14 @@ ps.executeUpdate();
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public String getType() {
+        return Type;
+    }
+
+    public void setType(String Type) {
+        this.Type = Type;
     }
 
    

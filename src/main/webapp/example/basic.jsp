@@ -44,7 +44,7 @@ byte h[];
     
    try{
      Class.forName("com.mysql.jdbc.Driver");
-      con=DriverManager.getConnection("jdbc:mysql://localhost:3306/department","root","root");
+     con=DriverManager.getConnection("jdbc:mysql://127.13.149.2:3306/department","adminRkEuhBn","b5u43VY_XpzV");
      
     
     uname1=request.getAttribute("uname").toString();

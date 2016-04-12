@@ -23,40 +23,29 @@ String att;
 %>
 
 <%
-    
-   
-     Class.forName("com.mysql.jdbc.Driver");
-      con=DriverManager.getConnection("jdbc:mysql://localhost:3306/department","root","root");
-     
-    
-   
-  String q="select * from fnametoid";  
-ps=con.prepareStatement(q);
-
-rs=ps.executeQuery();
-
-String q1="select * from anametoid";  
-ps1=con.prepareStatement(q1);
-
-rs1=ps1.executeQuery();
+    Class.forName("com.mysql.jdbc.Driver");
+    con=DriverManager.getConnection("jdbc:mysql://localhost:3306/department","root","root");
+    String q="select * from fnametoid";  
+    ps=con.prepareStatement(q);
+    rs=ps.executeQuery();
+    String q1="select * from anametoid";  
+    ps1=con.prepareStatement(q1);
+    rs1=ps1.executeQuery();
 
 %>
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-               <style>
-            #menu8 {
-                border-radius:10px;
-                
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Department E Portal</title>
+<style>
+    #menu8 {
+        border-radius:10px;       
 	width: 150px;
         height:200px;
 	margin-top: 0px;
-        margin-left:600px;
-        
-       
+        margin-left:600px;     
 }
 	
 #menu8 li a {
@@ -92,20 +81,123 @@ rs1=ps1.executeQuery();
 	margin: 0;
 	padding: 0;
 }
+body{
+    width:95%;
+    height:100%;
+    background-color:white;
+    background-image: url('../Image/bg3.jpg');
+    background-repeat: no-repeat;
+    background-size: 1500px 700px;
+    background-attachment: fixed;
+}
+   .studentmngt
+            {
+               
+                border:3px solid; 
+                border-radius: 12px;
+                height:50px;
+                width:800px;
+                background-color:blue;
+                color:white;
+               
+            }
+            .stutr
+            {
+                border: 1px solid grey;
+                border-radius: 12px;
+                background-color:black;
+                color:white;
+                font-size: 20px;
+            }
+            .stutd
+            {
+                border: 1px solid grey;
+                border-radius: 12px;
+                background-color:black;
+                color:white;
+                font-size: 20px;
+                text-align: center;
+            }
+            .stutd1
+            {
+                color:white;
+                font-size: 20px;
+                text-align: center;
+            }
+ 
+a:link {
+    
+    color: white;
+}
+
+/* visited link */
+a:visited {
+    color: green;
+}
+
+
+a:active {
+    color: white;
+}
+.stutd1:hover {
+    background-color: lightgreen;
+}
+.noticeform
+{
+    background-color:grey;
+    margin-left: 50px;
+    border: 1px solid;
+    border-radius:12px;
+    color:white;
+    font-size: 30px;
+}
+.sub
+{
+    font-family: sans-serif;
+    font-size: 30px;
+    border:2px solid;
+    height:30px;
+    color:black;
+    width:900px;
+    background-color:white;
+    border-radius:12px;
+    
+}
+.msg
+{
+     border:2px solid;
+    color:black;
+    background-color:white;
+    border-radius:12px;
+    font-family: sans-serif;
+    font-size: 20px;
+}
+.btn
+{
+    border:2px solid; 
+    color:white;
+    background-color:black;
+    border-radius:12px;
+    font-family: sans-serif;
+    font-size: 20px;
+}
+       
 
         </style>
     </head>
     <body>
       
-         <tiles:insert definition="facultydef"/>
-         <a href="adminallnotices.jsp">view all notices</a>
-       
-         <table border="1px" style="margin-left:400px;margin-top:100px;border:1px;border-style: solid;height:50px;width:600px;border-color:black;">
-            <tr style="border:1px;border-color:black;border-style:solid; ">
-                <th>Id</th>
-                <th>Name</th>
+         <tiles:insert definition="Admindef"/>
+         <a style='color:black;text-decoration: none;font-family: sans-serif; margin-left: 350px;width:150px; height:150px; background-color:red;border:2px solid white;font-size:50px;border-radius:12px; ' href="adminallnotices.jsp">View All Notices</a>
+         
+         <center>
+ <h1 style='color:yellow;'>Admin Management</h1>
+         <table class='studentmngt'>
+            <tr class='stutr'>
+                <th class='stutd'>Id</th>
+                <th class='stutd'>Name</th>
                 
-                <th>Deactivate/Delete Admin</th>
+                <th class='stutd'>Deactivate/Delete Admin</th>
             </tr>
             <%  
             
@@ -115,12 +207,12 @@ while(rs1.next())
   id=rs1.getInt("Id");
     nameStu=rs1.getString("name");
             %>
-             <tr>
-                <td><%=rs1.getInt("Id")%></td>
-                <td><%=rs1.getString("name")%></td>
+             <tr >
+                <td class='stutd1'><%=rs1.getInt("Id")%></td>
+                <td class='stutd1'><%=rs1.getString("name")%></td>
                 
               
-               <td><a href="deactivateAdmin?Id=<%=id%>&&username=<%=nameStu%>" title="Services">Deactivate Admin</a></td>
+               <td class='stutd1'><a href="deactivateAdmin?Id=<%=id%>&&username=<%=nameStu%>" title="Services">Deactivate Admin</a></td>
             </tr>
             
             
@@ -133,18 +225,18 @@ while(rs1.next())
  
          
          
+ <hr>        
+         
+         <h1 style='color:yellow;'>Faculty Management</h1>
          
          
          
-         
-         
-         
-         <table border="1px" style="margin-left:400px;margin-top:100px;border:1px;border-style: solid;height:50px;width:600px;border-color:black;">
-            <tr style="border:1px;border-color:black;border-style:solid; ">
-                <th>Id</th>
-                <th>Name</th>
+         <table class='studentmngt'>
+            <tr class='stutr' ">
+                <th class='stutd'>Id</th>
+                <th class='stutd'>Name</th>
                 
-                <th>Deactivate/Delete Faculty</th>
+                <th class='stutd'>Deactivate/Delete Faculty</th>
             </tr>
             <%  
             
@@ -155,11 +247,11 @@ while(rs.next())
     nameStu=rs.getString("name");
             %>
              <tr>
-                <td><%=rs.getInt("Id")%></td>
-                <td><%=rs.getString("name")%></td>
+                <td class='stutd1'><%=rs.getInt("Id")%></td>
+                <td class='stutd1'><%=rs.getString("name")%></td>
                 
               
-               <td><a href="deactivateFaculty?Id=<%=id%>&&username=<%=nameStu%>" title="Services">Deactivate Faculty</a></td>
+               <td class='stutd1'><a href="deactivateFaculty?Id=<%=id%>&&username=<%=nameStu%>" title="Services">Deactivate Faculty</a></td>
             </tr>
             
             
@@ -169,18 +261,21 @@ while(rs.next())
             
         </table>
          
-           
-         
+     </center>      
+      <hr>   
          <div id="menu8" >
-  <ul>
-     
-      <div style="border:1px;border-style:ridge;border-color:black;border-radius:10px;background-color:greenyellow;"> <li><a href="activateuser.jsp" title="About">Activate Student</a></li>
+  
+     <hr>
+      <div style="border:1px;border-style:ridge;border-color:black;border-radius:10px;background-color:greenyellow;"> <li><a href="activateuser.jsp?Type=1" title="About">Activate Student</a></li>
     </div>
+      <hr>
        <div style="border:1px;border-style:ridge;border-color:black;border-radius:10px;background-color:greenyellow;"> <li><a href="activatefaculty.jsp" title="About">Activate Faculty</a></li>
     </div>
+       <hr>
         <div style="border:1px;border-style:ridge;border-color:black;border-radius:10px;background-color:greenyellow;"> <li><a href="activateAdmin.jsp" title="About">Activate Admin</a></li>
     </div>  
-    
+        <hr> 
+    <ul>
     <li><a href="#4" title="Portfolio"></a></li>
     <li><a href="#5" title="Store"></a></li>
     <li><a href="#6" title="Download"></a></li>

@@ -7,11 +7,13 @@
 <struts>
     <package name="example" namespace="/example" extends="struts-default">
         <action name="Authentication" class="example.Authentication" method="execute">
+            <result name="input">/example/login.jsp</result>
             <result name="admin">/example/Admin.jsp</result>
              <result name="student">/example/Student.jsp</result>
               <result name="faculty">/example/Faculty.jsp</result>
               <result name="error">/example/error.jsp</result>
                <result name="login">/example/login.jsp</result>
+                
         </action>
         <action name="logout" class="example.Authentication" method="logoutuser">
             <result type="redirect" name="logoutsuccess">/</result>
@@ -37,7 +39,7 @@
     
     <action name="deactivate" class="example.operation" method="deactivate">
             <result name="success">/example/Faculty.jsp</result>
-             
+              <result name="success1">/example/Admin.jsp</result>
         </action>
         <action name="deactivateFaculty" class="example.operation" method="deactivateFaculty">
             <result name="success">/example/Admin.jsp</result>
@@ -51,6 +53,7 @@
         
         <action name="activate" class="example.operation" method="activate">
             <result name="success">/example/Faculty.jsp</result>
+               <result name="success1">/example/Admin.jsp</result>
              
         </action>
         <action name="activateFaculty" class="example.operation" method="activateFaculty">
@@ -66,6 +69,7 @@
             <result name="success">/example/Faculty.jsp</result>
              
         </action>
+        
     </package>
      
 </struts>

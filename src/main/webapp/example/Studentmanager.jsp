@@ -26,7 +26,7 @@ String att;
     
    
      Class.forName("com.mysql.jdbc.Driver");
-      con=DriverManager.getConnection("jdbc:mysql://localhost:3306/department","root","root");
+      con=DriverManager.getConnection("jdbc:mysql://127.13.149.2:3306/department","adminRkEuhBn","b5u43VY_XpzV");
      
     
    String uname1=request.getAttribute("uname").toString();
@@ -71,25 +71,36 @@ rs2=ps2.executeQuery();
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>LayoutStudent</title>
+        <style>
+            .btn
+{
+    border:2px solid; 
+    color:white;
+    background-color:black;
+    border-radius:12px;
+    font-family: sans-serif;
+    font-size: 20px;
+}
+        </style>
     </head>
     <body>
- 
-  
-      
         <tiles:insert attribute="head"/>
         <div>
-        <div style="border-width:2px;border-style: ridge;border-radius:10px;padding-left:554px;font-family: sans-serif;font-weight: 900;font-size:larger;font-style:initial;border-color:black;width:780px;height:60px;background-color:greenyellow;">STUDENT HOME
-        </div>
+            <div class='btn'>
+                         
+                        <a  style="ine-height: 1em;
+                            display:inline-block;
+                            text-decoration: none;
+                            padding:5px;
+                             padding-left:20px;
+                    margin:0px;"href="logout">Logout</a>
+                    </div>
+            
+        
             <div name="bas" style="float:left;margin-top:40px;border: black;border-radius:20px;height:500px;width:300px;border-style: inset;">
               <tiles:insert attribute="basic"/>
         </div>
-        <div style="font-style: italic;font-weight: bold;font-family: sans-serif;padding-left:370px;">
-            </br>
-            </br>
-            CGPA:  
-        </br>
-        </br>
-        ATTENDENCE%: 
+        
       
         <div>
             <h1>Notice</h1>
@@ -97,7 +108,7 @@ rs2=ps2.executeQuery();
             while(rs2.next())
             {
             %>
-            <div style="border:1px;border-style: ridge;border-color:green;background-color: azure;width:950px;border-radius:10px;">
+            <div >
                 <center>SRM UNIVERSITY</center>
                                                           
 Date:<%=rs2.getString("date")%>

@@ -53,5 +53,11 @@
        <put name="fbasic" value="/example/fbasic.jsp"/>  
          
     </definition>
+      <definition name="Admindef" template="/example/AdminManager.jsp">
+        <put name="head" value="/example/header.jsp"/>
+       
+       <put name="fbasic" value="/example/fbasic.jsp"/>  
+         
+    </definition>
 
 </tiles-definitions>

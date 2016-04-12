@@ -10,6 +10,17 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Student</title>
+        <style>
+                  body{
+    width:95%;
+    height:100%;
+    background-color:white;
+    background-image: url('../Image/bg3.jpg');
+    background-repeat: no-repeat;
+    background-size: 1500px 700px;
+    background-attachment: fixed;
+}
+        </style>
     </head>
     <body>
        

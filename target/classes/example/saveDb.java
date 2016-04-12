@@ -41,7 +41,7 @@ public class saveDb extends ActionSupport {
     
     public String execute() throws Exception {
      Class.forName("com.mysql.jdbc.Driver");
-     Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/department","root","root");
+    Connection  con=DriverManager.getConnection("jdbc:mysql://127.13.149.2:3306/department","adminRkEuhBn","b5u43VY_XpzV");
   
     FileInputStream fis =  new FileInputStream(pic);
      String q="insert into login values(?,?,?,?,?,?,?,?)";  

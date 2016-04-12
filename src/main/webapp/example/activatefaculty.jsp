@@ -24,9 +24,7 @@ String att;
     
    
      Class.forName("com.mysql.jdbc.Driver");
-      con=DriverManager.getConnection("jdbc:mysql://localhost:3306/department","root","root");
-     
-    
+       con=DriverManager.getConnection("jdbc:mysql://127.13.149.2:3306/department","adminRkEuhBn","b5u43VY_XpzV");
    
   String q="select username,activate from login where activate=? && Type=?";  
 ps=con.prepareStatement(q);

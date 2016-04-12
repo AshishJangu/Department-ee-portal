@@ -1,0 +1,46 @@
+.login{
+                padding-top:30px;
+                padding-left:40px;
+                color: green;
+
+                 font-family:sans-serif;
+                 font-weight: bolder;
+                 font-size:20px;
+                 letter-spacing:0px;
+               
+              
+            }
+.headertbl{
+    background-color:blue;
+    width:100%;
+    height:100px;
+    border:1px solid white;
+    border-radius:60px ;
+     background-image:url('../Image/headbg4.jpg');
+    background-repeat:no-repeat;
+    background-size: 1500px 110px;
+            }
+.leftlogo{           
+    height:100px;
+    width:100px;
+    border:1px solid white;
+    background-image:url('../Image/logo.png');
+    background-repeat:no-repeat;
+    background-size: 100px 100px;
+    border-radius:60px;
+}
+.middlelogo{
+    height:100px;
+    width:600px;
+    
+    border-radius:60px;
+    text-align: center;
+    margin-left: 600px;
+    height: 90px;
+    line-height: 90px; 
+}
+.rightlogo{           
+    height:100px;
+    width:200px;
+   
+}

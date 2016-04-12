@@ -43,41 +43,29 @@ byte h[];
 <%
     
    try{
-     Class.forName("com.mysql.jdbc.Driver");
-      con=DriverManager.getConnection("jdbc:mysql://localhost:3306/department","root","root");
-     
-    
+    Class.forName("com.mysql.jdbc.Driver");
+      con=DriverManager.getConnection("jdbc:mysql://127.13.149.2:3306/department","adminRkEuhBn","b5u43VY_XpzV");
     uname1=request.getAttribute("uname").toString();
-   System.out.println(uname1);
-  String q="select Id from nametoid where name=?";  
-ps=con.prepareStatement(q);
-ps.setString(1,uname1);
-rs=ps.executeQuery();
-
-while(rs.next())
-{
-    id=rs.getInt(1);
-   
-}
-
-
-
-
-
-String q1="select * from login where username=?";  
-ps1=con.prepareStatement(q1);
-ps1.setString(1,uname1);
-rs1=ps1.executeQuery();
-
-while(rs1.next())
-{
-    email=rs1.getString("email");branch=rs1.getString("branch");
-    section=rs1.getString("section");
-    pd=rs1.getString("password");
-    b=rs1.getBlob("pic");
-    
-    
-}
+    System.out.println(uname1);
+    String q="select Id from nametoid where name=?";  
+    ps=con.prepareStatement(q);
+    ps.setString(1,uname1);
+    rs=ps.executeQuery();
+    while(rs.next())
+    {
+        id=rs.getInt(1);
+    }
+    String q1="select * from login where username=?";  
+    ps1=con.prepareStatement(q1);
+    ps1.setString(1,uname1);
+    rs1=ps1.executeQuery();
+    while(rs1.next())
+    {
+        email=rs1.getString("email");branch=rs1.getString("branch");
+        section=rs1.getString("section");
+        pd=rs1.getString("password");
+        b=rs1.getBlob("pic");
+    }
  //for getting image from db and store it to req folder
 /*
 baos = new ByteArrayOutputStream();

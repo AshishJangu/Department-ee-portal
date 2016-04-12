@@ -13,6 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+        
         <tiles:insert definition="welcome"/>
           
     </body>

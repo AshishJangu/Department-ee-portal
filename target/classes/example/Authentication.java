@@ -41,7 +41,7 @@ public class Authentication extends ActionSupport implements SessionAware {
     }
     public String execute() throws Exception {
           Class.forName("com.mysql.jdbc.Driver");
-     Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/department","root","root");
+      Connection  con=DriverManager.getConnection("jdbc:mysql://127.13.149.2:3306/department","adminRkEuhBn","b5u43VY_XpzV");
        String q="select * from login where username=?";  
        PreparedStatement st=con.prepareStatement(q);
        st.setString(1,username);
@@ -61,6 +61,7 @@ public class Authentication extends ActionSupport implements SessionAware {
             if(t.equals("1"))
             {
                   map.put("name",username);
+                   map.put("Type",Type);
                 login=true;
                 if(activate.equals("true"))
                 return "admin";  
@@ -71,7 +72,8 @@ public class Authentication extends ActionSupport implements SessionAware {
              else if(t.equals("2"))
              {
                    map.put("name",username);
-                 login=true;
+               map.put("Type",Type);
+                   login=true;
                   if(activate.equals("true"))
                 return "student";  
                 else
@@ -81,6 +83,7 @@ public class Authentication extends ActionSupport implements SessionAware {
                  else if(t.equals("3"))
                  {
                      map.put("name",username);
+                    map.put("Type",Type);
                      login=true;
                     if(activate.equals("true"))
                 return "faculty";  
